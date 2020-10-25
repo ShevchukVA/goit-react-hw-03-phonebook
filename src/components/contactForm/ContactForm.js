@@ -10,8 +10,7 @@ export default class ContactForm extends Component {
   handleChange = ({ target }) => {
     const { name, value } = target;
 
-    this.setState({ [name]: value });
-    this.props.onBanContact(this.state);
+    this.setState({ [name]: value });    
   };
 
   handleSubmit = e => {
@@ -42,7 +41,7 @@ export default class ContactForm extends Component {
             Number
             <input
               className={styles.input}
-              type="number"
+              type="tel"
               name="number"
               value={number}
               autoComplete="off"

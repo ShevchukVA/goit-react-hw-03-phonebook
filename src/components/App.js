@@ -33,8 +33,14 @@ export default class PhoneBook extends Component {
       number,
     };
 
+    const names = this.state.contacts.map(contact =>
+      contact.name.toLowerCase(),
+    );
+
     if (name === '' || number === '') {
       return contact;
+    } else if (names.includes(name.toLowerCase())) {
+      alert(`${name} is already in contacts.`);
     } else {
       this.setState(prevState => {
         return {
@@ -64,20 +70,6 @@ export default class PhoneBook extends Component {
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase()),
     );
-  };
-
-  handleBanContact = ({ name }) => {
-    
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.map(contact => {
-          if (contact.name.toLowerCase() === name.toLowerCase()) {
-            alert(`${name} is already in contacts.`);            
-          }
-          return contact;
-        }),
-      };
-    });
   };
 
   render() {
